@@ -1,5 +1,6 @@
 import Reconciler from "react-reconciler";
 import MidiWriter from "midi-writer-js";
+import { NoteEvent } from "midi-writer-js/build/types/midi-events/note-event";
 
 interface MIDIProps {
   pitch?: string;
@@ -105,16 +106,27 @@ const renderMIDI = (element: React.ReactElement) => {
 
   const track = new MidiWriter.Track();
 
-  const renderNode = (node: any) => {
+  const events: NoteEvent[] = [];
+
+  const renderNode = (node: {
+    type: string;
+    props: { pitch: Array<string>; duration: string; velocity: string };
+    children: any;
+  }) => {
     if (node.type === "midi-note") {
       const { pitch, duration, velocity } = node.props;
-      track.addEvent(new MidiWriter.NoteEvent({ pitch, duration, velocity }));
+      events.push(new MidiWriter.NoteEvent({ pitch, duration, velocity }));
     } else {
       node.children.forEach(renderNode);
     }
   };
 
   container.children.forEach(renderNode);
+
+  track.addEvent(events, (event, index) => {
+    console.log(event, index);
+    return { sequential: true };
+  });
 
   const write = new MidiWriter.Writer(track);
   return write.buildFile();

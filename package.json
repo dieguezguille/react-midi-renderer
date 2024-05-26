@@ -4,7 +4,7 @@
   "description": "A custom React renderer for creating MIDI compositions.",
   "main": "index.js",
   "scripts": {
-    "build": "babel src --extensions '.ts,.tsx' --out-dir dist",
+    "build": "tsc",
     "prepublishOnly": "npm run build"
   },
   "keywords": [

@@ -2,18 +2,21 @@
 
 import React from "react";
 
-interface MIDIProps {
-  pitch?: string;
-  duration?: string;
-  velocity?: number;
+interface MIDITrackProps {
   children?: React.ReactNode;
 }
 
-export const MIDISequence: React.FC<MIDIProps> = ({ children }) => (
+interface MIDINoteProps {
+  pitch: string;
+  duration: string;
+  velocity: number;
+}
+
+export const MIDITrack: React.FC<MIDITrackProps> = ({ children }) => (
   <midi-sequence>{children}</midi-sequence>
 );
 
-export const MIDINote: React.FC<MIDIProps> = ({
+export const MIDINote: React.FC<MIDINoteProps> = ({
   pitch,
   duration,
   velocity,
