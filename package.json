@@ -1,0 +1,41 @@
+{
+  "name": "react-midi-renderer",
+  "version": "1.0.0",
+  "description": "A custom React renderer for creating MIDI compositions.",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --extensions '.ts,.tsx' --out-dir dist",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "react",
+    "midi",
+    "renderer",
+    "music",
+    "composition"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "midi-writer-js": "^3.1.1",
+    "react": "^18.3.1",
+    "react-reconciler": "^0.29.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.6",
+    "@babel/core": "^7.24.6",
+    "@babel/preset-env": "^7.24.6",
+    "@babel/preset-react": "^7.24.6",
+    "@babel/preset-typescript": "^7.24.6",
+    "@types/react": "^18.3.3",
+    "@types/react-reconciler": "^0.28.8",
+    "typescript": "^5.4.5"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react",
+      "@babel/preset-typescript"
+    ]
+  }
+}
